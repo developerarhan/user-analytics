@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaSpark — Scalable Plans</title>
+    <style>
+        :root {
+            --bg: #090d16;
+            --surface: #111827;
+            --border: #1f2937;
+            --text: #f9fafb;
+            --brand: #3b82f6;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .title-area {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .title-area h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin: 0 0 12px 0;
+        }
+
+        .grid {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .card.featured {
+            border-color: var(--brand);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
+            background: linear-gradient(180deg, #111827 0%, #0f1521 100%);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand);
+            color: white;
+            padding: 4px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .price {
+            font-size: 3.25rem;
+            font-weight: 800;
+            margin: 24px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+            font-size: 0.95rem;
+            color: #9ca3af;
+            line-height: 2;
+        }
+
+        .features-list li::before {
+            content: "✓ ";
+            color: var(--brand);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .btn-select {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-select:hover {
+            background: #1d4ed8;
+        }
+
+        .card:not(.featured) .btn-select {
+            background: #374151;
+        }
+
+        .card:not(.featured) .btn-select:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="background-color: #060910; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937;">
+        <span
+            style="color: #3b82f6; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">🧪
+            Sandbox Router</span>
+        <div style="display: flex; gap: 24px;">
+            <a href="/demo.html" style="color: #6b7280; text-decoration: none; font-size: 13px; font-weight: 500;">🏠
+                Home</a>
+            <a href="/features.html" style="color: #6b7280; text-decoration: none; font-size: 13px; font-weight: 500;">⚡
+                Features</a>
+            <a href="/products.html"
+                style="color: #6b7280; text-decoration: none; font-size: 13px; font-weight: 500;">📦 Products</a>
+            <a href="/pricing.html"
+                style="color: #3b82f6; text-decoration: none; font-size: 13px; font-weight: 600; border-bottom: 2px solid #3b82f6; padding-bottom: 4px;">💰
+                Pricing</a>
+            <a href="/contact.html" style="color: #6b7280; text-decoration: none; font-size: 13px; font-weight: 500;">📞
+                Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title-area">
+            <h1>Transparent Infrastructure Plans</h1>
+            <p style="color: #9ca3af; margin: 0; font-size: 1.1rem;">Monitor drop-off behavior configurations across
+                varying premium scales.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div style="font-weight: 600; color: #9ca3af;">Developer Sandbox</div>
+                    <div class="price">$0 <span>/ forever</span></div>
+                    <ul class="features-list">
+                        <li>10,000 baseline tracking logs</li>
+                        <li>Single domain context frame</li>
+                        <li>7-day hot buffer retention</li>
+                    </ul>
+                </div>
+                <button class="btn-select" id="btn-plan-starter-click">Deploy Free Instance</button>
+            </div>
+
+            <div class="card featured">
+                <div class="badge">Most Requested</div>
+                <div>
+                    <div style="font-weight: 600; color: #60a5fa;">Production Core</div>
+                    <div class="price">$49 <span>/ mo</span></div>
+                    <ul class="features-list">
+                        <li>Infinite structural event logs</li>
+                        <li>5 interconnected domains</li>
+                        <li>Heatmap Studio Engine layers</li>
+                        <li>Full REST Extraction APIs</li>
+                    </ul>
+                </div>
+                <button class="btn-select" id="btn-plan-pro-click">Provision Core Stack</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+
+</html>

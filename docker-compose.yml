@@ -1,0 +1,89 @@
+# Orchestrates three services on a shared internal bridge network:
+#
+#   database  — MongoDB 7 with a named volume for data persistence
+#   backend   — Flask/Gunicorn API, waits for a healthy database before starting
+#   frontend  — Nginx serving the compiled React bundle + proxying /api/*
+
+services:
+
+# 1. MongoDB
+  database:
+    image: mongo:7.0
+    container_name: analytics_mango
+    restart: unless-stopped
+
+    ports: 
+      - "27017:27017"
+
+    volumes:
+      - mongo_data:/data/db
+    
+    networks:
+      - analytics_net
+    
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--eval",
+          "db.adminCommand('ping').ok"
+        ]
+      interval: 15s
+      timeout: 8s
+      retries: 5
+      start_period: 15s
+
+# 2. Flask Backend
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: analytics_backend
+    restart: unless-stopped
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      MONGO_URI: mongodb://database:27017/analytics
+      FLASK_ENV: production
+      WEB_CONCURRENCY: 2
+
+    depends_on:
+      database:
+        condition: service_healthy
+
+    networks:
+      - analytics_net
+
+# 3. Frontend
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:5173
+    
+    container_name: analytics_frontend
+    restart: unless-stopped
+
+    ports:
+      - "5173:5173"
+
+    depends_on:
+      - backend
+    
+    networks:
+      - analytics_net
+  
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  analytics_net:
+    driver: bridge
+      

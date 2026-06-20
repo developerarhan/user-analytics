@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaSpark — Data Solutions</title>
+    <style>
+        :root {
+            --bg: #060814;
+            --card: #0f1126;
+            --border: #1f2347;
+            --text: #f8fafc;
+            --muted: #64748b;
+            --brand: #6366f1;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .product-row {
+            display: flex;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .product-row:hover {
+            border-color: #4f46e5;
+        }
+
+        .visual-pane {
+            background: linear-gradient(135deg, #1e1b4b, #0f0e26);
+            width: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            border-right: 1px solid var(--border);
+        }
+
+        .content-pane {
+            padding: 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content-pane h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .content-pane p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin: 0 0 24px 0;
+            font-size: 0.98rem;
+        }
+
+        .btn-action {
+            background: var(--brand);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            align-self: flex-start;
+            transition: background 0.2s;
+        }
+
+        .btn-action:hover {
+            background: #4f46e5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="background-color: #04050f; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2347;">
+        <span
+            style="color: #6366f1; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">🧪
+            Sandbox Router</span>
+        <div style="display: flex; gap: 24px;">
+            <a href="/demo.html" style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">🏠
+                Home</a>
+            <a href="/features.html" style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">⚡
+                Features</a>
+            <a href="/products.html"
+                style="color: #6366f1; text-decoration: none; font-size: 13px; font-weight: 600; border-bottom: 2px solid #6366f1; padding-bottom: 4px;">📦
+                Products</a>
+            <a href="/pricing.html" style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">💰
+                Pricing</a>
+            <a href="/contact.html" style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">📞
+                Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 style="font-size: 2.5rem; font-weight: 850; text-align: center; margin: 0; letter-spacing: -0.02em;">Data
+            Architecture Suite</h1>
+        <p style="text-align: center; color: #94a3b8; margin: 12px 0 50px 0; font-size: 1.1rem;">Clicking checkout CTA
+            inputs will register conversion intents directly into your behavioral pipeline.</p>
+
+        <div class="grid">
+            <div class="product-row">
+                <div class="visual-pane">📈</div>
+                <div class="content-pane">
+                    <h2>Analytics Core Cluster</h2>
+                    <p>Real-time session timeline engine optimized for cloud infrastructure. Provides complete
+                        administrative pipeline insights with zero external tracking dependencies.</p>
+                    <button class="btn-action" id="btn-prod-core-checkout">Provision Cluster Ingestion</button>
+                </div>
+            </div>
+
+            <div class="product-row">
+                <div class="visual-pane" style="background: linear-gradient(135deg, #2e102f, #140516);">🔥</div>
+                <div class="content-pane">
+                    <h2>Heatmap Studio Raster</h2>
+                    <p>Instantly transforms millions of raw behavioral coordinate matrices into dynamic visual canvases.
+                        Fully reactive across multiple responsive breakpoints.</p>
+                    <button class="btn-action" id="btn-prod-heatmap-checkout" style="background: #ec4899;">Provision
+                        Studio License</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+
+</html>

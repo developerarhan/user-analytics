@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaSpark — Next-Gen Telemetry Ingestion</title>
+    <style>
+        :root {
+            --bg: #070a13;
+            --surface: #0f1322;
+            --surface-card: #141a30;
+            --border: #1e2640;
+            --text: #f8fafc;
+            --muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #38bdf8;
+            --glow: rgba(56, 189, 248, 0.15);
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Ambient glow effect in background */
+        .hero-container::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .badge-promo {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--accent-cyan);
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-container h1 {
+            font-size: 3.5rem;
+            font-weight: 850;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin: 0 0 24px 0;
+            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-container p {
+            color: #94a3b8;
+            font-size: 1.25rem;
+            max-width: 680px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .cta-wrapper {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #141929;
+            border-color: #334155;
+        }
+
+        /* Interactive Live Sandbox Section */
+        .playground-section {
+            max-width: 1000px;
+            margin: 40px auto 80px auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .playground-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 32px;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .node-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .node-card:hover {
+            border-color: var(--accent-cyan);
+            background: #19213d;
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .node-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .node-desc {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="background-color: #04060d; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;">
+        <span
+            style="color: var(--accent-cyan); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">🧪
+            Sandbox Router</span>
+        <div style="display: flex; gap: 24px;">
+            <a href="/demo.html"
+                style="color: var(--accent-cyan); text-decoration: none; font-size: 13px; font-weight: 600; border-bottom: 2px solid var(--accent-cyan); padding-bottom: 4px;">🏠
+                Home</a>
+            <a href="/features.html"
+                style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s;">⚡
+                Features</a>
+            <a href="/products.html"
+                style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">📦 Products</a>
+            <a href="/pricing.html" style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">💰
+                Pricing</a>
+            <a href="/contact.html" style="color: #64748b; text-decoration: none; font-size: 13px; font-weight: 500;">📞
+                Contact</a>
+        </div>
+    </div>
+
+    <div class="hero-container">
+        <div class="badge-promo">✨ Engine Pipeline Status: Operational</div>
+        <h1>Capture Behavioral Telemetry<br>At Scale.</h1>
+        <p>NovaSpark processes high-fidelity micro-interactions and maps physical browser coordinates with zero impact
+            on frontend main-thread performance cycles.</p>
+
+        <div class="cta-wrapper">
+            <button class="btn-primary" id="btn-hero-primary" onclick="window.location.href='/pricing.html'">Deploy Core
+                Cluster</button>
+            <button class="btn-secondary" id="btn-hero-secondary"
+                onclick="window.location.href='/features.html'">Explore Technical Docs</button>
+        </div>
+    </div>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="playground-section">
+            <div class="playground-header">
+                <div class="window-dots">
+                    <span style="background: #ef4444;"></span>
+                    <span style="background: #eab308;"></span>
+                    <span style="background: #22c55e;"></span>
+                </div>
+                <div style="font-size: 12px; color: #64748b; font-family: monospace; font-weight: 600;">
+                    interactive_telemetry_matrix.json</div>
+            </div>
+
+            <h3 style="margin: 0 0 12px 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.01em;">Coordinate
+                Test-Bed Matrix</h3>
+            <p style="color: #94a3b8; font-size: 14px; margin: 0 0 32px 0;">Click across the decoupled test targets
+                below to generate diverse target paths and coordinate logs for your dashboard.</p>
+
+            <div class="interactive-grid">
+                <div class="node-card" id="btn-home-node-a" onclick="console.log('Node Alpha logged.')">
+                    <div class="node-title">📡 Node Alpha (Ingestion)</div>
+                    <p class="node-desc">Triggers an instantaneous delta snapshot to evaluate baseline transit latencies
+                        over the active buffer array.</p>
+                </div>
+
+                <div class="node-card" id="btn-home-node-b" onclick="console.log('Node Beta logged.')">
+                    <div class="node-title">⚙️ Node Beta (Processing)</div>
+                    <p class="node-desc">Executes structural serialization models down through the local runtime
+                        coordinate normalizer engine loop.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+
+</html>

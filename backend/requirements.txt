@@ -1,0 +1,14 @@
+ # Web framework
+flask==3.0.3
+ 
+# Cross-Origin Resource Sharing middleware for Flask
+flask-cors==4.0.1
+ 
+# Official MongoDB driver (includes bson for ObjectId serialisation)
+pymongo==4.7.3
+ 
+# Production WSGI server — never use Flask's built-in server in a container
+gunicorn==22.0.0
+ 
+# Environment variable loading (.env file support for local dev outside Docker)
+python-dotenv==1.0.1

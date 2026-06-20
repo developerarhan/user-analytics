@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaSpark — Contact Architecture</title>
+    <style>
+        :root {
+            --bg: #090b11;
+            --card: #121620;
+            --border: #22293a;
+            --text: #f3f4f6;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .form-box {
+            max-width: 520px;
+            margin: 80px auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .field-group {
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .field-group input,
+        .field-group select,
+        .field-group textarea {
+            border: 1px solid var(--border);
+            background: #181d2a;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            color: white;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .field-group input:focus,
+        .field-group select:focus,
+        .field-group textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-dispatch {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: 12px;
+        }
+
+        .btn-dispatch:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="background-color: #05070b; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #22293a;">
+        <span
+            style="color: #3b82f6; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">🧪
+            Sandbox Router</span>
+        <div style="display: flex; gap: 24px;">
+            <a href="/demo.html" style="color: #9ca3af; text-decoration: none; font-size: 13px; font-weight: 500;">🏠
+                Home</a>
+            <a href="/features.html" style="color: #9ca3af; text-decoration: none; font-size: 13px; font-weight: 500;">⚡
+                Features</a>
+            <a href="/products.html"
+                style="color: #9ca3af; text-decoration: none; font-size: 13px; font-weight: 500;">📦 Products</a>
+            <a href="/pricing.html" style="color: #9ca3af; text-decoration: none; font-size: 13px; font-weight: 500;">💰
+                Pricing</a>
+            <a href="/contact.html"
+                style="color: #3b82f6; text-decoration: none; font-size: 13px; font-weight: 600; border-bottom: 2px solid #3b82f6; padding-bottom: 4px;">📞
+                Contact</a>
+        </div>
+    </div>
+
+    <div class="form-box">
+        <h2 style="margin: 0 0 8px 0; font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em;">Request Enterprise
+            SLA</h2>
+        <p style="color: #9ca3af; font-size: 0.95rem; margin: 0 0 32px 0; line-height: 1.5;">Interact with form field
+            controls below to send custom position dimensions to your timeline dashboard logs.</p>
+
+        <div class="field-group">
+            <label>Infrastructure Scale</label>
+            <select id="input-contact-scale">
+                <option>&lt; 1M monthly operations</option>
+                <option>1M - 10M monthly operations</option>
+                <option>10M+ Enterprise Cluster</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label>Configuration Parameters</label>
+            <textarea id="input-contact-notes" rows="4" placeholder="Describe layout scale constraints..."></textarea>
+        </div>
+
+        <button class="btn-dispatch" id="btn-contact-submit" onclick="alert('Inbound wire simulation captured!')">
+            Dispatch Request Wire
+        </button>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+
+</html>
