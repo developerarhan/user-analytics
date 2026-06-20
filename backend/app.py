@@ -45,10 +45,11 @@ log = logging.getLogger(__name__)
  
 # Configuration
 MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://database:27017/analytics")
-ALLOWED_ORIGINS: list[str] = os.getenv(
+raw_origins = os.getenv(
     "ALLOWED_ORIGINS",
     "http://localhost:5173,http://127.0.0.1:5173",
-).split(",")
+)
+ALLOWED_ORIGINS: list[str] = [origin.strip().rstrip("/") for origin in raw_origins.split(",")]
  
 # Flask application factory
  
