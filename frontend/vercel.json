@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://user-analytics-xjqc.onrender.com/api/:path*"
+    }
+  ]
+}
