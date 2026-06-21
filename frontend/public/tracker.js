@@ -8,7 +8,11 @@
   //   <script src="tracker.js"></script>
  
   var CONFIG = {
-    API_BASE_URL:       (window.CF_API_BASE || "http://localhost:5000"),
+    API_BASE_URL: window.CF_API_BASE || (
+        (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+            ? "http://localhost:5000"
+            : "https://user-analytics-xjqc.onrender.com"
+    ),
     EVENTS_ENDPOINT:    "/api/events",
     STORAGE_KEY:        "cf_session_id",
     // Maximum number of events to hold in the beacon queue at any one time.
