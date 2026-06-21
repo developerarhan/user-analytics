@@ -7,7 +7,13 @@
     <meta name="description" content="User session tracking and click heatmap analytics dashboard." />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <script>
-      window.CF_API_BASE = "%VITE_API_URL%";
+      if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      window.CF_API_BASE = "http://localhost:5000";
+      } else {
+        // Your live Render URL
+        window.CF_API_BASE = "https://user-analytics-xjqc.onrender.com";
+      }
+      console.log("[Tracker Linker] Directing events to:", window.CF_API_BASE);
     </script>
   </head>
   <body>
